@@ -1,14 +1,14 @@
 import { FC } from "react";
+import { Route, Routes } from "react-router-dom";
 
-interface IMy {
-  name: string;
-  age: number;
-}
+import "./App.scss";
 
 const App: FC = () => {
   return (
     <>
-      <h2>Hello world</h2>
+      <Routes>
+        <Route path="/" element={<h2>Auth</h2>} />
+      </Routes>
     </>
   );
 };
