@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import { store } from "./store/store";
-import { ThemeProvider } from "./components/theme-provider";
+import ThemeProvider from "./components/theme-provider/ThemeProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

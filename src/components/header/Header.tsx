@@ -1,20 +1,36 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../theme-provider";
+import { FC, useContext } from "react";
 
+import { TiAdjustBrightness } from "react-icons/ti";
 import { FaRegMoon } from "react-icons/fa";
-import { LuSunMedium } from "react-icons/lu";
 
-const Header = () => {
+import { ThemeContext } from "../theme-provider/ThemeProvider";
+
+import "./Header.scss";
+
+const Header: FC = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <nav>
-      <ul>
-        <li>Network Social</li>
-        <li>{theme === "light" ? <FaRegMoon /> : <LuSunMedium />}</li>
-        <li></li>
-      </ul>
-    </nav>
+    <section className="header-section">
+      <div className="header-infomation">
+        <div>
+          <p
+            className={
+              theme === "light" ? "title-aplication" : "title-aplication light"
+            }
+          >
+            Network Social
+          </p>
+        </div>
+        <div onClick={toggleTheme}>
+          {theme === "light" ? (
+            <FaRegMoon size="21px" />
+          ) : (
+            <TiAdjustBrightness size="24px" color="#fff" />
+          )}
+        </div>
+      </div>
+    </section>
   );
 };
 
