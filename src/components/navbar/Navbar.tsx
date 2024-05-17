@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { BsPostcard } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { FaUsers } from "react-icons/fa";
-
 import { ThemeContext } from "../theme-provider/ThemeProvider";
 
 import "./Navbar.scss";
@@ -19,7 +18,7 @@ const Navbar: FC = () => {
           <div className="button-wrapper">
             <Link
               to="/"
-              className={theme === "light" ? "nav-button" : "button light"}
+              className={theme === "light" ? "nav-button" : "nav-button light"}
             >
               <BsPostcard size="17px" />
               Посты
@@ -30,7 +29,7 @@ const Navbar: FC = () => {
           <div className="button-wrapper">
             <Link
               to="/following"
-              className={theme === "light" ? "nav-button" : "button light"}
+              className={theme === "light" ? "nav-button" : "nav-button light"}
             >
               <FiUsers size="17px" />
               Подписки

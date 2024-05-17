@@ -1,0 +1,54 @@
+.form-wrapper {
+  width: 300px;
+  height: 380px;
+  margin: 100px auto;
+  padding-top: 10px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: rgb(128, 128, 128, 0.2);
+
+  .select-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 90%;
+    height: 30px;
+    margin: 0 auto;
+    position: relative;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgb(128, 128, 128, 0.3);
+
+    .wrapper {
+      content: "";
+      width: 50%;
+      height: 100%;
+      border-radius: 8px;
+      background-color: rgb(128, 128, 128, 0.3);
+      position: absolute;
+      transition: transform 0.3s ease;
+
+      &.right {
+        transform: translateX(100%);
+      }
+    }
+
+    .form-item {
+      display: flex;
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        margin: 0;
+        color: rgb(0, 0, 0, 0.3);
+      }
+
+      .sign-up,
+      .sign-in {
+        color: rgb(0, 0, 0, 0.9);
+      }
+    }
+  }
+}

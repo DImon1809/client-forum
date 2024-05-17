@@ -1,3 +1,11 @@
+@mixin button-mixin($color) {
+  text-decoration: none;
+  color: $color;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 nav {
   ul {
     display: flex;
@@ -9,10 +17,10 @@ nav {
 
       .nav-button {
         text-decoration: none;
-        color: #000;
         display: flex;
         align-items: center;
         gap: 10px;
+        color: #000;
 
         &.light {
           color: #fff;

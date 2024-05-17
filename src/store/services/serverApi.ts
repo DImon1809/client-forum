@@ -5,18 +5,14 @@ import { RootType } from "../store";
 const baseQuery = fetchBaseQuery({
   baseUrl: `${BASE_URL}/api`,
   prepareHeaders: (headers, { getState }) => {
-    // const token =
-    //   (getState() as RootType).auth.token || localStorage.getItem("token");
+    const token =
+      (getState() as RootType).userSlice.token || localStorage.getItem("token");
 
-    // console.log(token);
+    if (token) {
+      headers.set("authorization", `Bearer ${token}`);
+    }
 
-    // if (token) {
-    //   headers.set("authorization", `Bearer ${token}`);
-    // }
-
-    const token = getState() as RootType;
-
-    console.log(token);
+    return headers;
   },
 });
 
