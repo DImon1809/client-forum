@@ -18,6 +18,8 @@ import Auth from "./pages/auth/Auth";
 import Navbar from "./components/navbar/Navbar";
 import Header from "./components/header/Header";
 
+import Profile from "./components/profile/Profile";
+
 import "./App.scss";
 
 const App: FC = () => {
@@ -40,12 +42,13 @@ const App: FC = () => {
             <Navbar />
             <Routes>
               <Route path="/" element={<Posts />} />
-              <Route path="/posts:id" element={<CurrentPost />} />
               <Route path="/posts/:id" element={<CurrentPost />} />
               <Route path="/users/:id" element={<UserProfile />} />
               <Route path="/followers" element={<Followers />} />
               <Route path="/following" element={<Following />} />
             </Routes>
+
+            <Profile />
           </section>
         </>
       ) : (

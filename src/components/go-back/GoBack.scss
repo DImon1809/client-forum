@@ -1,0 +1,17 @@
+.go-back {
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+
+  &:hover .arrow,
+  &:active .arrow {
+    transform: translateX(-5px);
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+}

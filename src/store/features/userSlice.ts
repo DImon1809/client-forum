@@ -14,7 +14,7 @@ export interface IinitialState {
 
 const initialState: IinitialState = {
   user: null,
-  isAuthenticated: !!localStorage.getItem("token"),
+  isAuthenticated: false,
   users: null,
   current: null,
 };
@@ -43,7 +43,7 @@ export const userSlice = createSlice({
         userApi.endpoints.current.matchFulfilled,
         (state, action: PayloadAction<IUser>) => {
           state.isAuthenticated = true;
-          state.user = action.payload;
+          state.current = action.payload;
         }
       )
       .addMatcher(

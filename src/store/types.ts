@@ -24,10 +24,12 @@ export interface IFollows {
 
 export interface IPost {
   id: string;
+  author: IUser;
   content: string;
   authorId: string;
   likes: ILike[];
   comments: IComment[];
+  likedByUser: boolean;
   createdAt: Date;
 }
 
@@ -40,6 +42,7 @@ export interface ILike {
 export interface IComment {
   id: string;
   content: string;
+  user: IUser;
   userId: string;
   postId: string;
 }

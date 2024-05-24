@@ -40,9 +40,9 @@ const Login: FC<ILogin> = ({ changeSelectedHandler }) => {
     }
   };
 
-  useEffect(() => {
-    if (!isLoading) console.log(data);
-  }, [isLoading, data]);
+  // useEffect(() => {
+  //   if (!isLoading) console.log(data);
+  // }, [isLoading, data]);
 
   return (
     <form className="form">

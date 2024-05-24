@@ -1,0 +1,40 @@
+.post-form {
+  width: 100%;
+
+  .wrapper-field {
+    width: 100%;
+
+    .post-field {
+      resize: none;
+      width: 98%;
+      height: 60px;
+      padding: 10px;
+      background-color: transparent;
+      border-radius: 12px;
+      outline: none;
+    }
+  }
+
+  .send-button {
+    width: 150px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #32cd32;
+    border-radius: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:active {
+      opacity: 0.5;
+      transform: translateY(-5px);
+
+      p {
+        opacity: 0.5;
+      }
+    }
+  }
+}

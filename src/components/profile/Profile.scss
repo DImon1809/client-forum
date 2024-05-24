@@ -1,0 +1,41 @@
+.user-card {
+  width: 220px;
+  height: 300px;
+  padding: 10px;
+  background-color: rgba(128, 128, 128, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  .infomation-wrapper {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    h4,
+    p {
+      margin: 0;
+    }
+
+    .name-link {
+      text-decoration: none;
+      color: #000;
+
+      &.light {
+        color: #fff;
+      }
+    }
+
+    .text-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}

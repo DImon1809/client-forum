@@ -1,0 +1,13 @@
+.section-posts {
+  width: 100%;
+
+  .posts-wrapper {
+    width: 98%;
+    height: 400px;
+    margin: 40px auto 0;
+
+    &.many {
+      overflow-y: scroll;
+    }
+  }
+}
