@@ -3,7 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { useGetAllPostsQuery } from "../../store/services/postsApi";
 
 import CreatePost from "../../components/create-post/CreatePost";
-import { CardPost } from "../../components/card-post/CardPost";
+import CardPost from "../../components/card-post/CardPost";
 
 import "./Posts.scss";
 

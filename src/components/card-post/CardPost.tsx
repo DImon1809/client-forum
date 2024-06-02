@@ -43,7 +43,7 @@ export interface ICardPost {
   likedByUser?: boolean;
 }
 
-export const CardPost: FC<ICardPost> = ({
+const CardPost: FC<ICardPost> = ({
   avatarUrl = "",
   name = "",
   authorId = "",
@@ -78,7 +78,14 @@ export const CardPost: FC<ICardPost> = ({
   ): Promise<void> => {
     event.preventDefault();
 
-    await deletePost(id);
+    // console.log(cardFor);
+
+    if (cardFor === "post" || cardFor === "current-post") await deletePost(id);
+
+    if (cardFor === "comment") {
+      console.log("Working...");
+      await deleteComment(commentId);
+    }
 
     await triggerGetAllPosts();
   };
@@ -89,10 +96,14 @@ export const CardPost: FC<ICardPost> = ({
     try {
       event.preventDefault();
 
+      // console.log(likes.find((_l) => _l.userId === current?.id));
+
       if (!likedByUser) await likePost({ postId: id });
 
       if (likedByUser)
-        await unlickPost(likes.find((_l) => _l.postId === id)?.id || "");
+        await unlickPost(
+          likes.find((_l) => _l.userId === current?.id)?.id || ""
+        );
 
       await triggerGetAllPosts();
     } catch (err) {
@@ -108,7 +119,7 @@ export const CardPost: FC<ICardPost> = ({
             <img src={`${BASE_URL}${avatarUrl}`} alt="#" />
           </div>
           <div className="user-info">
-            <Link className="user-name" to={`/users/${id}`}>
+            <Link className="user-name" to={`/users/${authorId}`}>
               <h4>{`${name}`}</h4>
             </Link>
             <p>{`${
@@ -135,36 +146,43 @@ export const CardPost: FC<ICardPost> = ({
         <p>{content}</p>
       </div>
 
-      <div className="post-footer">
-        <div className="heart-comment-wrapper">
-          <div className="heart-wrapper">
-            {likesCount > 0 && likesCount}
-            <FaRegHeart
-              className={likedByUser ? "heart like" : "heart"}
-              // onMouseEnter={() => setActive(true)}
-              // onMouseLeave={() => setActive(false)}
-              onClick={likePostHandler}
-            />
-          </div>
-
-          <div className="comment-wrapper">
-            <Link
-              to={`/posts/${id}`}
-              className={
-                localStorage.getItem("theme") === "black"
-                  ? "comment-link light"
-                  : "comment-link"
-              }
-            >
-              <FaRegComment
-                className="comment"
+      {cardFor === "post" ? (
+        <div className="post-footer">
+          <div className="heart-comment-wrapper">
+            <div className="heart-wrapper">
+              {likesCount > 0 && likesCount}
+              <FaRegHeart
+                className={likedByUser ? "heart like" : "heart"}
                 // onMouseEnter={() => setActive(true)}
                 // onMouseLeave={() => setActive(false)}
+                onClick={likePostHandler}
               />
-            </Link>
+            </div>
+
+            <div className="comment-wrapper">
+              {commentsCount > 0 && commentsCount}
+              <Link
+                to={`/posts/${id}`}
+                className={
+                  localStorage.getItem("theme") === "black"
+                    ? "comment-link light"
+                    : "comment-link"
+                }
+              >
+                <FaRegComment
+                  className="comment"
+                  // onMouseEnter={() => setActive(true)}
+                  // onMouseLeave={() => setActive(false)}
+                />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
+
+export default CardPost;

@@ -12,7 +12,7 @@ export const followApi = serverApi.injectEndpoints({
 
     unFollowUser: builder.mutation<void, string>({
       query: (userId) => ({
-        url: `/likes/${userId}`,
+        url: `/follow/${userId}`,
         method: "DELETE",
       }),
     }),

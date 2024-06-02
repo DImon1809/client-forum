@@ -3,7 +3,10 @@ import { FC } from "react";
 import { useParams } from "react-router-dom";
 import { useGetPostByIdQuery } from "../../store/services/postsApi";
 
-import { CardPost } from "../../components/card-post/CardPost";
+import { useSelector } from "react-redux";
+import { RootType } from "../../store/store";
+
+import CardPost from "../../components/card-post/CardPost";
 import GoBack from "../../components/go-back/GoBack";
 import CreateComment from "../../components/create-comment/CreateComment";
 
@@ -12,6 +15,8 @@ import "./CurrentPost.scss";
 const CurrentPost: FC = () => {
   const params = useParams<{ id: string }>();
   const { data } = useGetPostByIdQuery(params.id ?? "");
+
+  const current = useSelector((state: RootType) => state.userSlice.current);
 
   if (!data) return <h2>Поста не существует</h2>;
 
@@ -31,7 +36,9 @@ const CurrentPost: FC = () => {
         authorId={authorId}
         id={id}
         createAt={createdAt}
-        likedByUser={likes.find((_l) => _l.userId === authorId) ? true : false}
+        likedByUser={
+          likes.find((_l) => _l.userId === current?.id) ? true : false
+        }
       />
 
       <CreateComment postId={id} />

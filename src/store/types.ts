@@ -10,6 +10,7 @@ export interface IUser {
   bio?: string;
   location?: string;
   posts: IPost[];
+  followers: IFollows[];
   following: IFollows[];
   likes: ILike[];
   comments: IComment[];
@@ -20,6 +21,8 @@ export interface IFollows {
   id: string;
   followerId: string;
   followingId: string;
+  following: IUser;
+  followers: IUser;
 }
 
 export interface IPost {

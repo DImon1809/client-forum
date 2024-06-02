@@ -1,4 +1,8 @@
 .current-post {
   display: flex;
   flex-direction: column;
+
+  .comments {
+    margin-top: 20px;
+  }
 }

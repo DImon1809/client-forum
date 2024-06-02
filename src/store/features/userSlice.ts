@@ -10,6 +10,7 @@ export interface IinitialState {
   users: IUser[] | null;
   current: IUser | null;
   token?: string;
+  isPrewievProfile: boolean;
 }
 
 const initialState: IinitialState = {
@@ -17,6 +18,7 @@ const initialState: IinitialState = {
   isAuthenticated: false,
   users: null,
   current: null,
+  isPrewievProfile: true,
 };
 
 export const userSlice = createSlice({
@@ -27,6 +29,10 @@ export const userSlice = createSlice({
 
     resetUser: (state) => {
       state.user = null;
+    },
+
+    changePrewiev: (state, action: PayloadAction<boolean>) => {
+      state.isPrewievProfile = action.payload;
     },
   },
 
@@ -55,5 +61,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logout, resetUser } = userSlice.actions;
+export const { logout, resetUser, changePrewiev } = userSlice.actions;
 export const userSliceReducer = userSlice.reducer;
